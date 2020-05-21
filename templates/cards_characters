@@ -1,0 +1,41 @@
+<html>
+   <head>
+      <title>{{ title }}</title>
+   </head>
+   <body>
+       <table style="width:50%">
+         <tr>
+         {% for item in data.columns %}
+         <th>
+          <a href="?sort_by={{ escape(item) }}">{{ escape(item) }}</a>
+        </th>
+         {% end %}
+       </tr>
+
+
+
+       {% for ID,row in data.iterrows() %}
+         <tr>
+           {% for col,item in row.items() %}
+           <th style="text-align:left">
+             <a href="edit_character?ID={{escape(ID)}}">
+               {{ escape(str(item)) }}
+             </a>
+          </th>
+           {% end %}
+
+           <th>
+               <a href="change_face?refresh_image={{escape(ID)}}">
+                  <img border="0"  src="{{ static_url( 'img/' + escape(ID) +'.jpeg' ) }}" width="200" height="200">
+           </th>
+         </tr>
+       {% end %}
+
+  </table>
+  <h1><a href="edit_character?ID=">Add New</h1>
+{% include footer.html %}
+
+
+</body>
+
+ </html>

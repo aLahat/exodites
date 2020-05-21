@@ -1,0 +1,28 @@
+<html>
+   <head>
+      <title>Change Face</title>
+   </head>
+   <body>
+   <h1>{{escape(str(data['name'][ID]))}} {{escape(str(data['surname'][ID]))}}</h1>
+   <table style="width:25%">
+
+   <h2>
+   {% for item in data.columns %}
+    <tr>
+      <th style="text-align:left">{{ escape(item) }}:</th>
+      <th style="text-align:left">{{ escape(str(data[item][ID]))}}</th>
+    </tr>
+   {% end %}
+   </h2>
+   </table>
+
+   {% for i in files %}
+   <a href="characters?newface={{i}}&ID={{ID}}">
+   <img src="{{i}}" width="200" height="200" >
+
+
+   {% end %}
+   </body>
+   {% include footer.html %}
+
+</html>
